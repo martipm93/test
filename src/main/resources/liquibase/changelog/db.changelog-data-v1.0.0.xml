@@ -6,5 +6,65 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"
 	logicalFilePath="db.changelog-data-v1.0.0.xml">
 
-	
+	<changeSet author="martin.pons" id="ADD_CITY_DATA">
+		<insert tableName="CITY">
+			<column name="NAME" value="Barcelona"/>
+		</insert>
+		<insert tableName="CITY">
+			<column name="NAME" value="Madrid"/>
+		</insert>
+		<insert tableName="CITY">
+			<column name="NAME" value="Palma de Mallorca"/>
+		</insert>
+		<insert tableName="CITY">
+			<column name="NAME" value="New York"/>
+		</insert>
+		<insert tableName="CITY">
+			<column name="NAME" value="Chicago"/>
+		</insert>
+		<insert tableName="CITY">
+			<column name="NAME" value="Tokio"/>
+		</insert>
+		<insert tableName="CITY">
+			<column name="NAME" value="París"/>
+		</insert>
+		<insert tableName="CITY">
+			<column name="NAME" value="London"/>
+		</insert>
+		<insert tableName="CITY">
+			<column name="NAME" value="Singapur"/>
+		</insert>
+		<insert tableName="CITY">
+			<column name="NAME" value="Amsterdam"/>
+		</insert>
+	</changeSet>
+	<changeSet author="martin.pons" id="ADD_PRODUCT_TYPE">
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Electrodomésticos"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Accesorios"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Muebles"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+		<column name="NAME" value="Zapatos"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Ropa Hombre"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Ropa Mujer"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Utensilios"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Videojuegos"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Informática"/>
+		</insert>
+	</changeSet>
 </databaseChangeLog>
