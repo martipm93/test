@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"
+	logicalFilePath="db.changelog-property-definition.xml">
+
+	<!-- Definition of types to be used in all changesets -->
+
+	<property name="TEXT_TYPE" value="NCLOB" />
+	<property name="AUTOINCREMENT" value="false" />
+	<property name="ID_TYPE" value="NUMBER(38)" />
+	<property name="ORDER_TYPE" value="NUMBER(2)" />
+	<property name="TYPE_TABLE_ID_TYPE" value="NUMBER(2)" />
+	<property name="STRING_TYPE" value="NVARCHAR2" />
+	<property name="BRAND_ID_TYPE" value="NUMBER(3)" />
+	<property name="DEALER_CODE_TYPE" value="NVARCHAR2(5)" />
+	<property name="VERSION_TYPE" value="NUMBER(2)" />
+	<property name="YEAR_TYPE" value="NUMBER(4)" />
+	<property name="STRING_TYPE_TEXT" value="VARCHAR(255)" />
+	<property name="PRICE_VALUE" value="NUMBER(11, 2)" />
+	<property name="LOCATION_NUMBER" value="NUMBER(11, 8)" />
+	
+	<property name="UUID_TYPE" value="uniqueidentifier" />
+	<property name="UUID_FUNCTION" value="NEWID()" dbms="mssql" />
+
+</databaseChangeLog>

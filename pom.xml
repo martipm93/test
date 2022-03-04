@@ -32,10 +32,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>
@@ -150,7 +150,7 @@
                     <username>${jdbc.datasource.username}</username>
                     <password>${jdbc.datasource.password}</password>
                     <driver>${jdbc.datasource.driver}</driver>
-                    <changeLogFile>${project.basedir}/src/main/resources/db/db.changelog-master-dev.xml</changeLogFile>
+                    <changeLogFile>${project.basedir}/src/main/resources/db/db.changelog-master.xml</changeLogFile>
                     <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
                     <skip>false</skip>
                 </configuration>

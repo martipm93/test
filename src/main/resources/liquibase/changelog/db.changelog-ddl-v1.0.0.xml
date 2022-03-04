@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+		logicalFilePath="db.changelog-ddl-v1.0.0.xml">
+
+	<changeSet id="USER_TABLE" author="martin.pons">
+		<createTable tableName="USER">
+			<column name="ID" type="${ID_TYPE}" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"
+							 primaryKeyName="USER_PK"/>
+			</column>
+			<column name="USER_NAME" type="${STRING_TYPE}(25)"></column>
+			<column name="PASSWORD" type="${STRING_TYPE}(25)"></column>
+			<column name="EMAIL" type="${STRING_TYPE}(25)"></column>
+			<column name="FIRST_NAME" type="${STRING_TYPE}(25)"></column>
+			<column name="SURNAME_1" type="${STRING_TYPE}(25)"></column>
+			<column name="SURNAME_2" type="${STRING_TYPE}(25)"></column>
+			<column name="NIF" type="${STRING_TYPE}(9)"></column>
+			<column name="CREATED_DATE" type="TIMESTAMP"></column>
+			<column name="MODIFIED_DATE" type="TIMESTAMP"></column>
+		</createTable>
+	</changeSet>
+	<changeSet id="CITY_TABLE" author="martin.pons">
+		<createTable tableName="CITY">
+			<column name="ID" type="${ID_TYPE}" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"
+							 primaryKeyName="CITY_PK"/>
+			</column>
+			<column name="NAME" type="${STRING_TYPE}(50)"></column>
+		</createTable>
+	</changeSet>
+	<changeSet id="PRODUCT_TYPE_TABLE" author="martin.pons">
+		<createTable tableName="PRODUCT_TYPE">
+			<column name="ID" type="${ID_TYPE}" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"
+							 primaryKeyName="PRODUCT_TYPE_PK"/>
+			</column>
+			<column name="NAME" type="${STRING_TYPE}(50)"></column>
+		</createTable>
+	</changeSet>
+	<changeSet id="COMPANY_TABLE" author="martin.pons">
+		<createTable tableName="COMPANY">
+			<column name="ID" type="${ID_TYPE}" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"
+							 primaryKeyName="COMPANY_PK"/>
+			</column>
+			<column name="NAME" type="${STRING_TYPE}(50)"></column>
+			<column name="ADDRESS" type="${STRING_TYPE}(200)"></column>
+			<column name="PHONE_NUMBER" type="NUMBER(9,0)"></column>
+			<column name="CITY_ID" type="${ID_TYPE}"></column>
+		</createTable>
+		<addForeignKeyConstraint
+				constraintName="COMPANY_CITY_FK"
+				baseTableName="COMPANY" baseColumnNames="CITY_ID"
+				referencedTableName="CITY" referencedColumnNames="ID"
+				deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+				onUpdate="NO ACTION"/>
+	</changeSet>
+	<changeSet id="PRODUCT_TABLE" author="martin.pons">
+		<createTable tableName="PRODUCT">
+			<column name="ID" type="${ID_TYPE}" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"
+							 primaryKeyName="PRODUCT_PK"/>
+			</column>
+			<column name="NAME" type="${STRING_TYPE}(50)"></column>
+			<column name="PRODUCT_TYPE_ID" type="${ID_TYPE}"></column>
+			<column name="DESCRIPTION" type="${STRING_TYPE}(500)"></column>
+			<column name="IMAGE_URL" type="${STRING_TYPE}(500)"></column>
+			<column name="COMPANY_ID" type="${ID_TYPE}"></column>
+		</createTable>
+		<addForeignKeyConstraint
+				constraintName="PRODUCT_PRODUCT_TYPE_FK"
+				baseTableName="PRODUCT" baseColumnNames="PRODUCT_TYPE_ID"
+				referencedTableName="PRODUCT_TYPE" referencedColumnNames="ID"
+				deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+				onUpdate="NO ACTION"/>
+		<addForeignKeyConstraint
+				constraintName="PRODUCT_COMPANY_FK"
+				baseTableName="PRODUCT" baseColumnNames="COMPANY_ID"
+				referencedTableName="COMPANY" referencedColumnNames="ID"
+				deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+				onUpdate="NO ACTION"/>
+	</changeSet>
+
+</databaseChangeLog>
