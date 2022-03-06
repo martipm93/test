@@ -1,7 +1,8 @@
 package com.slashmobility.test.service;
 
-import com.slashmobility.test.entity.CompanyEntity;
+import com.slashmobility.test.web.dto.CompanyDTO;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CompanyService {

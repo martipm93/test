@@ -1,7 +1,6 @@
 package com.slashmobility.test.entity;
 
 import lombok.*;
-import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.*;
 

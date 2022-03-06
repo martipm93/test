@@ -1,8 +1,9 @@
 package com.slashmobility.test.service;
 
-import com.slashmobility.test.entity.UserEntity;
+import com.slashmobility.test.web.dto.UserDTO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
