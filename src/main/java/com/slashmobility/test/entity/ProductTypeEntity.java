@@ -1,15 +1,8 @@
 package com.slashmobility.test.entity;
 
-import lombok.*;
-
 import javax.persistence.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 @Entity
-@Builder
 @Table(name = "PRODUCT_TYPE")
 public class ProductTypeEntity {
 
@@ -20,4 +13,26 @@ public class ProductTypeEntity {
 
     @Column(name = "NAME")
     private String name;
+
+    public ProductTypeEntity() {}
+
+    public ProductTypeEntity(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

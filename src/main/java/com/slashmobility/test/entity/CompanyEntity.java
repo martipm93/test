@@ -1,15 +1,8 @@
 package com.slashmobility.test.entity;
 
-import lombok.*;
-
 import javax.persistence.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 @Entity
-@Builder
 @Table(name = "COMPANY")
 public class CompanyEntity {
     @Id
@@ -29,4 +22,53 @@ public class CompanyEntity {
     @ManyToOne()
     @JoinColumn(name = "CITY_ID", referencedColumnName = "ID")
     private CityEntity city;
+
+    public CompanyEntity() {}
+
+    public CompanyEntity(String name, String address, Long phoneNumber, CityEntity city) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.city = city;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Long getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Long phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public CityEntity getCity() {
+        return city;
+    }
+
+    public void setCity(CityEntity city) {
+        this.city = city;
+    }
 }

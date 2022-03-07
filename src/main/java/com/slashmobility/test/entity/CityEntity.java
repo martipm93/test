@@ -1,15 +1,10 @@
 package com.slashmobility.test.entity;
 
-import lombok.*;
+import com.slashmobility.test.mapper.CityMapper;
 
 import javax.persistence.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 @Entity
-@Builder
 @Table(name = "CITY")
 public class CityEntity {
 
@@ -20,4 +15,26 @@ public class CityEntity {
 
     @Column(name = "NAME")
     private String name;
+
+    public CityEntity() {}
+
+    public CityEntity(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -9,4 +9,7 @@ public interface CompanyRepository extends JpaRepository<CompanyEntity, Long> {
 
     Optional<CompanyEntity> findFirstById(Long id);
 
+    Optional<CompanyEntity> findFirstByNameEquals(String companyName);
+
+
 }
