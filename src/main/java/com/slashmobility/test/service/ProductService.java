@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    ProductDTO save(ProductDTO productDTO);
+    ProductDTO create(ProductDTO productDTO);
 
     ProductDTO update(ProductDTO productDTO, Long id);
 

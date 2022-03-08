@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CompanyService {
 
-    CompanyDTO save(CompanyDTO companyDto);
+    CompanyDTO create(CompanyDTO companyDto);
 
     CompanyDTO update(CompanyDTO companyDTO, Long id);
 

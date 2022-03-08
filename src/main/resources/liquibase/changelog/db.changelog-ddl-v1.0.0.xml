@@ -11,8 +11,8 @@
 				<constraints primaryKey="true" nullable="false"
 							 primaryKeyName="USER_PK"/>
 			</column>
-			<column name="USER_NAME" type="${STRING_TYPE}(25)"></column>
-			<column name="PASSWORD" type="${STRING_TYPE}(25)"></column>
+			<column name="USERNAME" type="${STRING_TYPE}(25)"></column>
+			<column name="PASSWORD" type="${STRING_TYPE}(500)"></column>
 			<column name="EMAIL" type="${STRING_TYPE}(25)"></column>
 			<column name="FIRST_NAME" type="${STRING_TYPE}(25)"></column>
 			<column name="SURNAME_1" type="${STRING_TYPE}(25)"></column>

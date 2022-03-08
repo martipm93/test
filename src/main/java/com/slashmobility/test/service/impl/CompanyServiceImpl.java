@@ -21,9 +21,14 @@ public class CompanyServiceImpl implements CompanyService {
         this.companyMapper = companyMapper;
     }
 
-    @Override
-    public CompanyDTO save(CompanyDTO companyDto) {
+    private CompanyDTO save(CompanyDTO companyDto) {
         return companyMapper.toDTO(companyRepository.saveAndFlush(companyMapper.toEntity(companyDto)));
+    }
+
+    @Override
+    public CompanyDTO create(CompanyDTO companyDto) {
+        companyDto.setId(null);
+        return save(companyDto);
     }
 
     @Override

@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface UserService {
 
-    UserDTO newUser(UserDTO userDTO);
+    UserDTO createUser(UserDTO userDTO);
 
     UserDTO update(UserDTO userDTO, Long id);
 
-    UserDTO resetPassword(UserDTO userDto);
+    UserDTO resetPassword(String newPassword);
 
     void logOut(HttpServletRequest httpServletRequest);
 

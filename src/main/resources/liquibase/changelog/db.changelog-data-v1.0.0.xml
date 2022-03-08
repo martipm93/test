@@ -67,4 +67,33 @@
 			<column name="NAME" value="Informática"/>
 		</insert>
 	</changeSet>
+	<changeSet author="martin.pons" id="ADD_PRODUCT_TYPE">
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Electrodomésticos"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Accesorios"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Muebles"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Zapatos"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Ropa Hombre"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Ropa Mujer"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Utensilios"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Videojuegos"/>
+		</insert>
+		<insert tableName="PRODUCT_TYPE">
+			<column name="NAME" value="Informática"/>
+		</insert>
+	</changeSet>
 </databaseChangeLog>

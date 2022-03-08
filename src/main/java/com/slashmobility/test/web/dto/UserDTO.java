@@ -1,13 +1,17 @@
 package com.slashmobility.test.web.dto;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 
 
-public class UserDTO {
+public class UserDTO implements UserDetails {
 
     private Long id;
     @NotNull
-    private String userName;
+    private String username;
     @NotNull
     private String password;
     @NotNull
@@ -19,10 +23,10 @@ public class UserDTO {
 
     public UserDTO() {}
 
-    public UserDTO(Long id, @NotNull String userName, @NotNull String password, @NotNull String email,
+    public UserDTO(Long id, @NotNull String username, @NotNull String password, @NotNull String email,
                    String firstName, String surName1, String surName2, String nif) {
         this.id = id;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
@@ -39,14 +43,41 @@ public class UserDTO {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    @Override
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
     public String getPassword() {
         return password;
     }

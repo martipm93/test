@@ -34,8 +34,7 @@ public class ProductServiceImpl implements ProductService {
         this.cityMapper = cityMapper;
     }
 
-    @Override
-    public ProductDTO save(ProductDTO productDTO) {
+    private ProductDTO save(ProductDTO productDTO) {
         Optional<CompanyEntity> companyEntity = companyRepository.findFirstByNameEquals(productDTO.getCompanyName());
         if (companyEntity.isPresent()) {
             ProductEntity productEntity = productMapper.toEntity(productDTO);
@@ -45,6 +44,12 @@ public class ProductServiceImpl implements ProductService {
             //throw new Exception;
             return null;
         }
+    }
+
+    @Override
+    public ProductDTO create(ProductDTO productDTO) {
+        productDTO.setId(null);
+        return save(productDTO);
     }
 
     @Override
