@@ -96,4 +96,15 @@
 			<column name="NAME" value="Informática"/>
 		</insert>
 	</changeSet>
+	<changeSet id="ADD_ADMIN_USER" author="martin.pons">
+		<insert tableName="USER">
+			<column name="USERNAME" value="admin"></column>
+			<column name="PASSWORD" value="$2a$10$a.9WqrJcg4HLXamSvaM7pugO7NTaNTSmblYJ/piySTCJ2yRBt7RH2"></column>
+			<column name="EMAIL" value="test@test.com"></column>
+			<column name="FIRST_NAME" value="Martí"></column>
+			<column name="SURNAME_1" value="Pons"></column>
+			<column name="SURNAME_2" value="Mayol"></column>
+			<column name="ENABLED" value="TRUE"></column>
+		</insert>
+	</changeSet>
 </databaseChangeLog>

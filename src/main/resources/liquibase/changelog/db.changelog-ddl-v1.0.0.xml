@@ -18,8 +18,7 @@
 			<column name="SURNAME_1" type="${STRING_TYPE}(25)"></column>
 			<column name="SURNAME_2" type="${STRING_TYPE}(25)"></column>
 			<column name="NIF" type="${STRING_TYPE}(9)"></column>
-			<column name="CREATED_DATE" type="TIMESTAMP"></column>
-			<column name="MODIFIED_DATE" type="TIMESTAMP"></column>
+			<column name="ENABLED" type="BOOLEAN"></column>
 		</createTable>
 	</changeSet>
 	<changeSet id="CITY_TABLE" author="martin.pons">
@@ -80,6 +79,22 @@
 				constraintName="PRODUCT_COMPANY_FK"
 				baseTableName="PRODUCT" baseColumnNames="COMPANY_ID"
 				referencedTableName="COMPANY" referencedColumnNames="ID"
+				deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+				onUpdate="NO ACTION"/>
+	</changeSet>
+	<changeSet id="VERIFICATION_TOKEN_TABLE" author="martin.pons">
+		<createTable tableName="VERIFICATION_TOKEN">
+			<column name="ID" type="${ID_TYPE}" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"
+							 primaryKeyName="VERIFICATION_TOKEN_PK"/>
+			</column>
+			<column name="TOKEN" type="${STRING_TYPE}(50)"></column>
+			<column name="USER_ID" type="${ID_TYPE}"></column>
+		</createTable>
+		<addForeignKeyConstraint
+				constraintName="VERIFICATION_TOKEN_USER_FK"
+				baseTableName="VERIFICATION_TOKEN" baseColumnNames="USER_ID"
+				referencedTableName="USER" referencedColumnNames="ID"
 				deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
 				onUpdate="NO ACTION"/>
 	</changeSet>

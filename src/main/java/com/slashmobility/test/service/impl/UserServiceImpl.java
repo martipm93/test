@@ -62,13 +62,23 @@ public class UserServiceImpl implements UserService {
         } catch(IOException e) {
 
         }*/
-        userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        return userMapper.toDTO(userRepository.saveAndFlush(userMapper.toEntity(userDTO)));
+        UserEntity userEntity = userMapper.toEntity(userDTO);
+        userEntity.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        userEntity.setEnabled(Boolean.FALSE);
+        userEntity = userRepository.saveAndFlush(userEntity);
+
+
+        return userMapper.toDTO(userEntity);
+    }
+
+    @Override
+    public UserDTO enableUser(String validationToken) {
+        return null;
     }
 
     private UserDTO save(UserDTO userDto) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        userDto.setPassword((String) authentication.getCredentials());
+        userDto.setPassword(passwordEncoder.encode((String) authentication.getCredentials()));
         return userMapper.toDTO(userRepository.saveAndFlush(userMapper.toEntity(userDto)));
     }
 

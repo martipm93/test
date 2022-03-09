@@ -9,6 +9,8 @@ public interface UserService {
 
     UserDTO createUser(UserDTO userDTO);
 
+    UserDTO enableUser(String validationToken);
+
     UserDTO update(UserDTO userDTO, Long id);
 
     UserDTO resetPassword(String newPassword);

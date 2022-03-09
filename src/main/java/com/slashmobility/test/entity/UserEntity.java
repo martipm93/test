@@ -32,9 +32,13 @@ public class UserEntity {
     @Column(name = "NIF")
     private String nif;
 
+    @Column(name = "ENABLED")
+    private Boolean enabled;
+
     public UserEntity() {}
 
-    public UserEntity(String username, String password, String email, String firstName, String surName1, String surName2, String nif) {
+    public UserEntity(String username, String password, String email, String firstName, String surName1, String surName2,
+                      String nif, Boolean enabled) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -42,6 +46,7 @@ public class UserEntity {
         this.surName1 = surName1;
         this.surName2 = surName2;
         this.nif = nif;
+        this.enabled = enabled;
     }
 
     public Long getId() {
@@ -106,5 +111,13 @@ public class UserEntity {
 
     public void setNif(String nif) {
         this.nif = nif;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

@@ -3,7 +3,7 @@ package com.slashmobility.test.config;
 import com.slashmobility.test.entity.UserEntity;
 import com.slashmobility.test.mapper.UserMapper;
 import com.slashmobility.test.repository.UserRepository;
-import com.slashmobility.test.web.dto.UserDTO;
+import com.slashmobility.test.web.dto.UserDetailsDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -22,8 +22,8 @@ public class CustomUserDetailService implements UserDetailsService {
     }
 
     @Override
-    public UserDTO loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetailsDTO loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional <UserEntity> userEntity = userRepository.findByUsernameEquals(username);
-        return userEntity.map(u -> userMapper.toDTO(u)).orElse(null);
+        return userEntity.map(u -> userMapper.toUserDetailsDTO(u)).orElse(null);
     }
 }
