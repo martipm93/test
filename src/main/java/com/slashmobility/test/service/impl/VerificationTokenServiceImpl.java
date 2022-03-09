@@ -6,6 +6,7 @@ import com.slashmobility.test.repository.VerificationTokenRepository;
 import com.slashmobility.test.service.VerificationTokenService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -24,7 +25,7 @@ public class VerificationTokenServiceImpl implements VerificationTokenService {
     }
 
     @Override
-    public VerificationTokenEntity findByToken(String token) {
+    public Optional<VerificationTokenEntity> findByToken(String token) {
         return verificationTokenRepository.findByToken(token);
     }
 }

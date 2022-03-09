@@ -38,6 +38,12 @@ public class UserEndpoint {
         return userService.createUser(userDTO);
     }
 
+    @GetMapping(value = URLConstants.REGISTRATION_CONFIRMED_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(code = HttpStatus.OK)
+    public UserDTO confirmUser(@RequestParam String token) {
+        return userService.enableUser(token);
+    }
+
     @PutMapping(value = URLConstants.ID_PATH_PARAM, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)
     public UserDTO updateUser(@PathVariable(URLConstants.ID_PARAM) Long id,

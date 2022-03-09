@@ -29,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(URLConstants.USER_ROOT.concat(URLConstants.REGISTRATION_PATH))
                 .permitAll()
-                .antMatchers(URLConstants.REGISTRATION_CONFIRMED_PATH)
+                .antMatchers(URLConstants.USER_ROOT.concat(URLConstants.REGISTRATION_CONFIRMED_PATH))
                 .permitAll()
                 .anyRequest()
                 .authenticated()
