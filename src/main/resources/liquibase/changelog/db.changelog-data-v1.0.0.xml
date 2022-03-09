@@ -67,35 +67,6 @@
 			<column name="NAME" value="Informática"/>
 		</insert>
 	</changeSet>
-	<changeSet author="martin.pons" id="ADD_PRODUCT_TYPE">
-		<insert tableName="PRODUCT_TYPE">
-			<column name="NAME" value="Electrodomésticos"/>
-		</insert>
-		<insert tableName="PRODUCT_TYPE">
-			<column name="NAME" value="Accesorios"/>
-		</insert>
-		<insert tableName="PRODUCT_TYPE">
-			<column name="NAME" value="Muebles"/>
-		</insert>
-		<insert tableName="PRODUCT_TYPE">
-			<column name="NAME" value="Zapatos"/>
-		</insert>
-		<insert tableName="PRODUCT_TYPE">
-			<column name="NAME" value="Ropa Hombre"/>
-		</insert>
-		<insert tableName="PRODUCT_TYPE">
-			<column name="NAME" value="Ropa Mujer"/>
-		</insert>
-		<insert tableName="PRODUCT_TYPE">
-			<column name="NAME" value="Utensilios"/>
-		</insert>
-		<insert tableName="PRODUCT_TYPE">
-			<column name="NAME" value="Videojuegos"/>
-		</insert>
-		<insert tableName="PRODUCT_TYPE">
-			<column name="NAME" value="Informática"/>
-		</insert>
-	</changeSet>
 	<changeSet id="ADD_ADMIN_USER" author="martin.pons">
 		<insert tableName="USER">
 			<column name="USERNAME" value="admin"></column>
@@ -107,4 +78,45 @@
 			<column name="ENABLED" value="TRUE"></column>
 		</insert>
 	</changeSet>
+    <changeSet id="ADD_COMPANIES" author="martin.pons">
+        <insert tableName="COMPANY">
+            <column name="NAME" value="Slash Mobility 1"></column>
+            <column name="ADDRESS" value="Calle test número test"></column>
+            <column name="PHONE_NUMBER" value="971666666"></column>
+            <column name="CITY_ID" value="1"></column>
+        </insert>
+        <insert tableName="COMPANY">
+            <column name="NAME" value="Slash Mobility 2"></column>
+            <column name="ADDRESS" value="Calle test 2 número test 2"></column>
+            <column name="PHONE_NUMBER" value="971777777"></column>
+            <column name="CITY_ID" value="2"></column>
+        </insert>
+    </changeSet>
+    <changeSet id="ADD_PRODUCTS" author="martin.pons">
+        <insert tableName="PRODUCT">
+            <column name="NAME" value="Producto 1"></column>
+            <column name="PRODUCT_TYPE_ID" value="1"></column>
+            <column name="DESCRIPTION" value="Descripción test 1"></column>
+            <column name="IMAGE_URL" value="https://imagen_alojada_en_cloud_1"></column>
+            <column name="COMPANY_ID" value="1"></column>
+        </insert>
+        <insert tableName="PRODUCT">
+            <column name="NAME" value="Producto 2"></column>
+            <column name="PRODUCT_TYPE_ID" value="2"></column>
+            <column name="DESCRIPTION" value="Descripción test 2"></column>
+            <column name="IMAGE_URL" value="https://imagen_alojada_en_cloud_2"></column>
+            <column name="COMPANY_ID" value="2"></column>
+        </insert>
+    </changeSet>
+    <changeSet id="ADD_ADMIN_USER" author="martin.pons">
+        <insert tableName="USER">
+            <column name="USERNAME" value="admin"></column>
+            <column name="PASSWORD" value="$2a$10$a.9WqrJcg4HLXamSvaM7pugO7NTaNTSmblYJ/piySTCJ2yRBt7RH2"></column>
+            <column name="EMAIL" value="test@test.com"></column>
+            <column name="FIRST_NAME" value="Martí"></column>
+            <column name="SURNAME_1" value="Pons"></column>
+            <column name="SURNAME_2" value="Mayol"></column>
+            <column name="ENABLED" value="TRUE"></column>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

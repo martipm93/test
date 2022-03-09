@@ -3,6 +3,7 @@ package com.slashmobility.test.web.endpoint;
 import com.slashmobility.test.service.ProductService;
 import com.slashmobility.test.web.dto.CityDTO;
 import com.slashmobility.test.web.dto.ProductDTO;
+import com.slashmobility.test.web.dto.ProductInputDTO;
 import com.slashmobility.test.web.dto.ProductTypeDTO;
 import com.slashmobility.test.web.endpoint.constants.URLConstants;
 import org.springframework.http.HttpStatus;
@@ -48,14 +49,14 @@ public class ProductEndpoint {
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)
-    public ProductDTO createProduct(@RequestBody ProductDTO productDTO) {
-        return productService.create(productDTO);
+    public ProductDTO createProduct(@RequestBody ProductInputDTO productInputDTO) {
+        return productService.create(productInputDTO);
     }
 
     @PutMapping(value = URLConstants.ID_PATH_PARAM, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(code = HttpStatus.OK)
     public ProductDTO updateProduct(@PathVariable(URLConstants.ID_PARAM) Long id,
-                                    @RequestBody ProductDTO productDTO) {
-        return productService.update(productDTO, id);
+                                    @RequestBody ProductInputDTO productInputDTO) {
+        return productService.update(productInputDTO, id);
     }
 }

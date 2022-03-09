@@ -3,6 +3,7 @@ package com.slashmobility.test.service;
 import com.slashmobility.test.web.dto.UserDTO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public interface UserService {
@@ -15,7 +16,7 @@ public interface UserService {
 
     UserDTO resetPassword(String newPassword);
 
-    void logOut(HttpServletRequest httpServletRequest);
+    void logOut(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse);
 
     UserDTO findById(Long id);
 

@@ -3,15 +3,16 @@ package com.slashmobility.test.service;
 
 import com.slashmobility.test.web.dto.CityDTO;
 import com.slashmobility.test.web.dto.ProductDTO;
+import com.slashmobility.test.web.dto.ProductInputDTO;
 import com.slashmobility.test.web.dto.ProductTypeDTO;
 
 import java.util.List;
 
 public interface ProductService {
 
-    ProductDTO create(ProductDTO productDTO);
+    ProductDTO create(ProductInputDTO productInputDTO);
 
-    ProductDTO update(ProductDTO productDTO, Long id);
+    ProductDTO update(ProductInputDTO productInputDTO, Long id);
 
     ProductDTO findById(Long id);
 

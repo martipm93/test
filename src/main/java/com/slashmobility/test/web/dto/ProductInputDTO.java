@@ -2,7 +2,7 @@ package com.slashmobility.test.web.dto;
 
 import javax.validation.constraints.NotNull;
 
-public class ProductDTO {
+public class ProductInputDTO {
 
     private Long id;
     @NotNull
@@ -14,17 +14,17 @@ public class ProductDTO {
     @NotNull
     private String imageUrl;
     @NotNull
-    private CompanyDTO company;
+    private String companyName;
 
-    public ProductDTO() {}
+    public ProductInputDTO() {}
 
-    public ProductDTO(Long id, @NotNull String name, @NotNull ProductTypeDTO productType, @NotNull String description, @NotNull String imageUrl, @NotNull CompanyDTO company) {
+    public ProductInputDTO(Long id, @NotNull String name, @NotNull ProductTypeDTO productType, @NotNull String description, @NotNull String imageUrl, @NotNull String companyName) {
         this.id = id;
         this.name = name;
         this.productType = productType;
         this.description = description;
         this.imageUrl = imageUrl;
-        this.company = company;
+        this.companyName = companyName;
     }
 
     public Long getId() {
@@ -67,11 +67,11 @@ public class ProductDTO {
         this.imageUrl = imageUrl;
     }
 
-    public CompanyDTO getCompany() {
-        return company;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setCompany(CompanyDTO company) {
-        this.company = company;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }

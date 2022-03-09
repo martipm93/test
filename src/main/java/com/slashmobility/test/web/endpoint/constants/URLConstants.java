@@ -7,6 +7,9 @@ public final class URLConstants {
     public static final String USER_ROOT = "/users";
     public static final String REGISTRATION_PATH = "/regsitration";
     public static final String REGISTRATION_CONFIRMED_PATH = "/registrationConfirmed";
+    public static final String RESET_PASSWORD = "/resetPassword";
+    public static final String  LOG_IN_PATH = "/login";
+    public static final String LOG_OUT_PATH = "/logout";
     public static final String ID_PATH_PARAM = "/{id}";
     public static final String ID_PARAM = "id";
     public static final String COMPANY_ROOT = "/companies";

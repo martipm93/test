@@ -13,14 +13,17 @@ import com.slashmobility.test.repository.UserRepository;
 import com.slashmobility.test.service.UserService;
 import com.slashmobility.test.service.VerificationTokenService;
 import com.slashmobility.test.web.dto.UserDTO;
+import com.slashmobility.test.web.dto.UserDetailsDTO;
 import com.slashmobility.test.web.endpoint.constants.URLConstants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -75,9 +78,11 @@ public class UserServiceImpl implements UserService {
     }
 
     private UserDTO save(UserDTO userDto) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        userDto.setPassword(passwordEncoder.encode((String) authentication.getCredentials()));
-        return userMapper.toDTO(userRepository.saveAndFlush(userMapper.toEntity(userDto)));
+        UserDetailsDTO userLogged = (UserDetailsDTO) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        userDto.setPassword(userLogged.getPassword());
+        UserEntity userEntity = userMapper.toEntity(userDto);
+        userEntity.setEnabled(Boolean.TRUE);
+        return userMapper.toDTO(userRepository.saveAndFlush(userEntity));
     }
 
     @Override
@@ -93,12 +98,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO resetPassword(String newPassword) {
-        return null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Optional<UserEntity> userEntity = userRepository.findByUsernameEquals(authentication.getName());
+        if (userEntity.isPresent()) {
+            userEntity.get().setPassword(passwordEncoder.encode(newPassword));
+            return userMapper.toDTO(userRepository.saveAndFlush(userEntity.get()));
+        } else {
+            //throw new Exception()
+            return null;
+        }
     }
 
     @Override
-    public void logOut(HttpServletRequest httpServletRequest) {
-
+    public void logOut(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null) {
+            new SecurityContextLogoutHandler().logout(httpServletRequest, httpServletResponse, auth);
+        }
     }
 
     @Override

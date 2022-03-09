@@ -10,6 +10,7 @@ import com.slashmobility.test.repository.ProductRepository;
 import com.slashmobility.test.service.ProductService;
 import com.slashmobility.test.web.dto.CityDTO;
 import com.slashmobility.test.web.dto.ProductDTO;
+import com.slashmobility.test.web.dto.ProductInputDTO;
 import com.slashmobility.test.web.dto.ProductTypeDTO;
 import org.springframework.stereotype.Service;
 
@@ -34,10 +35,10 @@ public class ProductServiceImpl implements ProductService {
         this.cityMapper = cityMapper;
     }
 
-    private ProductDTO save(ProductDTO productDTO) {
+    private ProductDTO save(ProductInputDTO productDTO) {
         Optional<CompanyEntity> companyEntity = companyRepository.findFirstByNameEquals(productDTO.getCompanyName());
         if (companyEntity.isPresent()) {
-            ProductEntity productEntity = productMapper.toEntity(productDTO);
+            ProductEntity productEntity = productMapper.inputToEntity(productDTO);
             productEntity.setCompany(companyEntity.get());
             return productMapper.toDTO(productRepository.saveAndFlush(productEntity));
         } else {
@@ -47,14 +48,14 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDTO create(ProductDTO productDTO) {
+    public ProductDTO create(ProductInputDTO productDTO) {
         productDTO.setId(null);
         return save(productDTO);
     }
 
     @Override
-    public ProductDTO update(ProductDTO productDTO, Long id) {
-        if (findById(id) == null) {
+    public ProductDTO update(ProductInputDTO productDTO, Long id) {
+        if (findById(id) != null) {
             productDTO.setId(id);
             return save(productDTO);
         } else {
